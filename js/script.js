@@ -1,4 +1,7 @@
-let movies = []
+const container = document.getElementById("movies");
+const selectInput = document.getElementById("genre");
+
+let movies = [];
 function filmAfficher(movies) {
   container.innerHTML = ""
     movies.forEach((movie) => {

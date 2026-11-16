@@ -1,7 +1,9 @@
 const container = document.getElementById("movies");
+const searchInput = document.getElementById("search");
 const selectInput = document.getElementById("genre");
 const formulaire = document.getElementById("formulaire");
-let movies = []
+
+let movies = [];
 function filmAfficher(movies) {
   container.innerHTML = ""
     movies.forEach((movie) => {
@@ -63,27 +65,32 @@ function filmAfficher(movies) {
   
 }
 
-formulaire.addEventListener("submit", filmAjouter);
+function filmRecherche(){
 
-function filmAjouter(event) {
-  event.preventDefault();
-  const nom = document.getElementById("nom-serie").value;
-  const genre = document.getElementById("Genre").value;
-  const description = document.getElementById("description").value;
+  searchInput.addEventListener("input", (event)=> {
+        const input = event.target.value.trim().toLowerCase();
+        const filteredMovies = movies.filter((movie)=> movie.name.toLowerCase().includes(input))
+        filmAfficher(filteredMovies)
+    })
 
-  const newMovie = {
-    id: 1,
-    name: nom,
-    genres: [genre],
-    summary: description,
-    image: { original: "https://placehold.net/400x400.png" } 
-  };
-
-  movies.push(newMovie);
-  filmAfficher(movies);
-  formulaire.reset();
 }
 
+function filterFilm(){
+  selectInput.addEventListener("change", (event) => {
+    const selectedOption = event.target.value;
+    if (selectedOption === "") {
+      filmAfficher(movies);
+      return;
+    }
+    
+    const filmQuiSontFiltrees = movies.filter((movie) => 
+      movie.genres.includes(selectedOption));
+
+      filmAfficher(filmQuiSontFiltrees)
+
+
+  })
+}
 
 async function fetchFilm() {
   try {
@@ -95,8 +102,10 @@ async function fetchFilm() {
     }
     
     movies = await response.json();
-    filmAfficher(movies); 
-    filmAjouter(movies);
+    filmAfficher(movies);
+    filmRecherche(movies);
+    filterFilm(movies);    
+
   } catch (error) {
     console.error("Failed to fetch movies:", error);
   }

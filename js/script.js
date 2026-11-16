@@ -96,7 +96,7 @@ async function fetchFilm() {
     
     movies = await response.json();
     filmAfficher(movies); 
-    filmAjouter(movies)
+    filmAjouter(movies);
   } catch (error) {
     console.error("Failed to fetch movies:", error);
   }

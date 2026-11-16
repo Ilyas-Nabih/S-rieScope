@@ -65,6 +65,26 @@ function filmAfficher(movies) {
   
 }
 
+function filmAjouter(event) {
+  event.preventDefault();
+  const nom = document.getElementById("nom-serie").value;
+  const genre = document.getElementById("Genre").value;
+  const description = document.getElementById("description").value;
+
+  const newMovie = {
+    id: 1,
+    name: nom,
+    genres: [genre],
+    summary: description,
+    image: { original: "https://placehold.net/400x400.png" } 
+  };
+
+  movies.push(newMovie);
+  filmAfficher(movies);
+  formulaire.reset();
+}
+
+
 function filmRecherche(){
 
   searchInput.addEventListener("input", (event)=> {

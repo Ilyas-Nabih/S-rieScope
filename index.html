@@ -8,6 +8,149 @@
     <link rel="stylesheet" href="">
 </head>
 <body>
-    
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/script.js" defer></script>
+</head>
+
+<body class="bg-zinc-950">
+  <header class="flex gap-2">
+    <img class="rounded-xl p-2 aspect-square ml-6 mt-6 bg-white max-h-12 rounded-xs"
+      src="asssets/icons/—Pngtree—clapperboard glyph icon vector_5209072.png" alt="clapperboard icon">
+    <span class="text-white mt-8 text-2xl font-bold">Sériescope</span>
+  </header>
+  <main>
+    <section>
+      <div class="mt-4 ml-4 ">
+        <h1 class="text-white text-2xl font-bold md:text-4xl">Explore les séries TV</h1>
+        <p class="text-zinc-400 text-xs md:text-lg">Retrouve tes séries préférées et enrichis le catalogue.</p>
+      </div>
+    </section>
+    <section>
+      <form id="formulaire" class="flex flex-col gap-4 p-10 border border-[#393939] rounded-2xl mx-5 mt-2">
+
+        <h3 class="text-[21px] font-bold text-[#FAFAFA]">
+          Ajouter une série
+        </h3>
+
+        <p class="text-[16px] font-bold text-[#BABABA]">
+          Les champs marqués d'un * sont obligatoires.
+        </p>
+
+        <!-- MODIFICATION 1 : GRID RESPONSIVE DU FORMULAIRE -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="flex flex-col gap-2">
+            <label class="text-[14px] font-semibold text-[#FAFAFA]" for="nom-serie">
+              Nom de la série *
+            </label>
+
+            <input class="w-full border-[#393939] border p-2 rounded-lg text-[14px] text-[#BABABA] bg-transparent"
+              type="text" id="nom-serie" name="nom" placeholder="Ex. The Bear" required />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="text-[14px] font-semibold text-[#FAFAFA]" for="Genre">
+              Genre(s) *
+              <span class="text-[#BABABA] text-[9px] items-center font-normal">
+                séparés par des virgules
+              </span>
+            </label>
+
+            <input class="w-full border-[#393939] border p-2 rounded-lg text-[14px] text-[#BABABA] bg-transparent"
+              type="text" id="Genre" placeholder="Ex. Drame, Comédie" required />
+          </div>
+
+          <!-- MODIFICATION 2 : DESCRIPTION PREND TOUTE LA LARGEUR -->
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="text-[16px] font-semibold text-[#FAFAFA]" for="description">
+              Description
+              <span class="text-[9px] items-center text-[#BABABA]">
+                facultative
+              </span>
+            </label>
+
+            <textarea name="description" id="description" placeholder="Résume la série en quelques mots…"
+              class="w-full border-[#393939] border p-2 rounded-lg text-[14px] text-[#BABABA] bg-transparent"></textarea>
+          </div>
+
+        </div>
+
+        <button class="rounded-lg flex flex-col text-black font-bold p-3 w-fit bg-white border border-[#393939]"
+          type="submit">
+          + Ajouter la série
+        </button>
+
+      </form>
+    </section>
+
+
+    <section>
+      <h2 class="text-white text-2xl ml-4 mt-4">Catalogue des séries</h2>
+      <p class="text-[#BABABA] mt-1 ml-4">Recherche par nom ou explore un genre.</p>
+      <div class="rounded-xl border border-white/10 bg-neutral-900 p-4 md:p-5 mx-5">
+        <div class="grid grid-cols-[1fr_auto] items-end gap-x-3 gap-y-4 md:grid-cols-[1fr_1fr_auto] md:gap-x-4">
+
+          <!-- Recherche -->
+          <div class=" col-span-2 md:col-span-1 mx-">
+            <label for="search" class="mb-2 block text-sm font-semibold text-white">
+              Recherche
+            </label>
+            <input id="search" type="text" placeholder="Ex. Breaking Bad" class="h-11 w-full rounded-lg border border-white/10 bg-neutral-900 px-3 text-sm text-white
+               placeholder:text-neutral-400" />
+          </div>
+
+          <div>
+            <label for="genre" class="mb-2 block text-sm font-semibold text-white">
+              Genre
+            </label>
+            <div class="relative">
+              <select id="genre"
+                class="h-11 w-full rounded-lg border border-white/10 bg-neutral-900 pl-3 pr-10 text-sm text-neutral-300">
+                <option value="">Tous les genres</option>
+
+              </select>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section>
+      <div class="mx-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6" id="movies">
+
+        <!-- <article class="bg-neutral-900 rounded-[14px] overflow-hidden border border-[#393939] hover:cursor-pointer hover:border-white">
+      
+        <img src="asssets/photos/Capture d'écran 2026-11-10 092407.png" alt="breaking-bad" class="w-full ">
+        
+        <div class="ml-4">
+
+          <h2 class="text-white font-bold mt-1">Breaking Bad</h2>
+        
+            <div class=" flex gap-2 mt-1">
+              <span class="text-white bg-zinc-800 rounded-[9px] pl-1.5 pr-1.5 ">Drame</span>
+              <span class="text-white bg-zinc-800 rounded-[9px] pl-1.5 pr-1.5" >Policier</span>
+            </div>
+          
+            <p class="text-zinc-400 mt-1 mb-1">Un professeur de chimie mène une double vie.</p>
+        
+        </div>
+      </article> -->
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
 </body>
 </html>

@@ -83,7 +83,7 @@ function filmAjouter(event) {
   filmAfficher(movies);
   formulaire.reset();
 }
-
+formulaire.addEventListener("submit", filmAjouter);
 
 function filmRecherche(){
 

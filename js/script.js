@@ -1,5 +1,7 @@
 const container = document.getElementById("movies");
+const searchInput = document.getElementById("search");
 const selectInput = document.getElementById("genre");
+const formulaire = document.getElementById("formulaire");
 
 let movies = [];
 function filmAfficher(movies) {
@@ -63,6 +65,33 @@ function filmAfficher(movies) {
   
 }
 
+function filmRecherche(){
+
+  searchInput.addEventListener("input", (event)=> {
+        const input = event.target.value.trim().toLowerCase();
+        const filteredMovies = movies.filter((movie)=> movie.name.toLowerCase().includes(input))
+        filmAfficher(filteredMovies)
+    })
+
+}
+
+function filterFilm(){
+  selectInput.addEventListener("change", (event) => {
+    const selectedOption = event.target.value;
+    if (selectedOption === "") {
+      filmAfficher(movies);
+      return;
+    }
+    
+    const filmQuiSontFiltrees = movies.filter((movie) => 
+      movie.genres.includes(selectedOption));
+
+      filmAfficher(filmQuiSontFiltrees)
+
+
+  })
+}
+
 async function fetchFilm() {
   try {
     const response = await fetch("https://api.tvmaze.com/shows?page=0");
@@ -73,7 +102,9 @@ async function fetchFilm() {
     }
     
     movies = await response.json();
-    filmAfficher(movies); 
+    filmAfficher(movies);
+    filmRecherche(movies);
+    filterFilm(movies);    
 
   } catch (error) {
     console.error("Failed to fetch movies:", error);

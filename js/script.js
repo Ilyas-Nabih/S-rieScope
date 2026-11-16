@@ -1,3 +1,6 @@
+const container = document.getElementById("movies");
+const selectInput = document.getElementById("genre");
+const formulaire = document.getElementById("formulaire");
 let movies = []
 function filmAfficher(movies) {
   container.innerHTML = ""

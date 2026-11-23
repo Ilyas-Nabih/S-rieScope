@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/script.js" defer></script>
+  <!-- <script src="js/script.js" defer></script> -->
+   <script type="module" src="main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
 </head>
 
 <body class="bg-zinc-950">
@@ -104,6 +107,19 @@
               <select id="genre"
                 class="h-11 w-full rounded-lg border border-white/10 bg-neutral-900 pl-3 pr-10 text-sm text-neutral-300">
                 <option value="">Tous les genres</option>
+
+              </select>
+
+            </div>
+          </div>
+          <div>
+            <label for="language" class="mb-2 block text-sm font-semibold text-white">
+              Language
+            </label>
+            <div class="relative">
+              <select id="language"
+                class="h-11 w-full rounded-lg border border-white/10 bg-neutral-900 pl-3 pr-10 text-sm text-neutral-300">
+                <option value="">Tous les langues</option>
 
               </select>
 
